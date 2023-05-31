@@ -46,7 +46,7 @@ namespace Med_Docs.models
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSideBar.Location = new System.Drawing.Point(0, 0);
             this.pnlSideBar.Name = "pnlSideBar";
-            this.pnlSideBar.Size = new System.Drawing.Size(200, 769);
+            this.pnlSideBar.Size = new System.Drawing.Size(200, 808);
             this.pnlSideBar.TabIndex = 0;
             // 
             // pnlButtonArea
@@ -74,7 +74,7 @@ namespace Med_Docs.models
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(200, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(1397, 70);
+            this.pnlTopBar.Size = new System.Drawing.Size(1413, 70);
             this.pnlTopBar.TabIndex = 1;
             // 
             // pnlMain
@@ -84,17 +84,17 @@ namespace Med_Docs.models
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(200, 70);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1397, 699);
+            this.pnlMain.Size = new System.Drawing.Size(1413, 738);
             this.pnlMain.TabIndex = 2;
-            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1597, 769);
+            this.ClientSize = new System.Drawing.Size(1613, 808);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.pnlSideBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximumSize = new System.Drawing.Size(1613, 808);
             this.MinimumSize = new System.Drawing.Size(1613, 808);
             this.Name = "ParentForm";

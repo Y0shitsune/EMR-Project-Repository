@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Med_Docs.models;
 using Med_Docs.src;
 
 namespace Med_Docs
@@ -51,9 +46,9 @@ namespace Med_Docs
             string roleID = comboBox1.SelectedValue.ToString();
             User user = new User(roleID);
             
-            Main main = new Main(user);
-            main.Show();
-            Hide();
+            ParentForm parent = new ParentForm(user);
+            parent.Show();
+            this.Hide();
         }
     }
 }

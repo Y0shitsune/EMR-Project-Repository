@@ -8,7 +8,7 @@ namespace Med_Docs.src
 {
     public class User
     {
-        private Permissions _permissions;
+        private enum Permissions { };
         private int _securityLevel;
         public User(string roleID) {
             if (roleID.Equals("2000"))

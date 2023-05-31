@@ -1,9 +1,9 @@
-﻿using Med_Docs.src;
-using System;
+﻿using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Windows.Forms;
+using Med_Docs.src;
+using Med_Docs.models.forms;
 
 namespace Med_Docs.models
 {
@@ -19,7 +19,26 @@ namespace Med_Docs.models
             InitializeComponent();
             WindowState = FormWindowState.Normal;
 
-            this.user = user;
+            Form np = new NewPatient();
+            OpenChildForm(np);
+        }
+
+    public void OpenChildForm(Form childForm)
+        {
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.SizeGripStyle = SizeGripStyle.Auto;
+
+            pnlMain.Controls.Add(childForm);
+            pnlMain.Tag = childForm;
+
+            pnlMain.HorizontalScroll.Maximum = 0;
+            pnlMain.AutoScroll = false;
+            pnlMain.VerticalScroll.Visible = false;
+            pnlMain.AutoScroll = true;
+
+            childForm.BringToFront();
+            childForm.Show();
         }
     }
 }
