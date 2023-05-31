@@ -8,26 +8,57 @@ namespace Med_Docs.src
 {
     public class User
     {
-        private enum Permissions { };
+        public enum Permission
+        {
+            CanCreateUser,
+            CanDeleteUser,
+            CanModifyUser,
+            CanCreatePrescription,
+            CanDeletePrescription,
+            CanModifyPrescription,
+            CanCreateMedRecord,
+            CanDeleteMedRecord,
+            CanModifyMedRecord
+        }
+        private List<Permission> _permissions { get; set; }
         private int _securityLevel;
         public User(string roleID) {
             if (roleID.Equals("2000"))
             {
                 _securityLevel = 3;
-                _permissions = new AdminPermissions();
+                _permissions = new List<Permission>()
+                {
+                    Permission.CanCreateUser,
+                    Permission.CanDeleteUser,
+                    Permission.CanModifyUser,
+                    Permission.CanCreatePrescription,
+                    Permission.CanDeletePrescription,
+                    Permission.CanCreateMedRecord,
+                    Permission.CanModifyMedRecord
+                };
             }
             else if (roleID.Equals("2010"))
             {
                 _securityLevel = 2;
-                _permissions = new DoctorPermissions();
+                _permissions = new List<Permission>()
+                {
+                    Permission.CanCreatePrescription,
+                    Permission.CanDeletePrescription,
+                    Permission.CanCreateMedRecord,
+                    Permission.CanModifyMedRecord
+                };
             }
             else if (roleID.Equals("2020"))
             {
                 _securityLevel = 1;
-                _permissions = new SecretaryPermissions();
+                _permissions = new List<Permission>()
+                {
+                    Permission.CanCreateMedRecord,
+                    Permission.CanModifyMedRecord
+                };
             }
         }
-        public Permissions permissions { 
+        public List<Permission> permissions { 
             get { return _permissions; } 
         }
         public int securityLevel
