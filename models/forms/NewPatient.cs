@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -43,21 +44,39 @@ namespace Med_Docs.models.forms
             string query = "INSERT INTO PATIENT(Patient_Name,Age,Sex,Birthdate,Patient_Address) VALUES" +
                 $"('{name}',{age},'{sex}','{date}','{address}');";
 
-            _conn = DbConnection.getConnection();
-            _conn.Open();
-
-            SqlCommand command = new SqlCommand(query, _conn);
-            command.ExecuteNonQuery();
-
-            _conn.Close();
-
-            MessageBox.Show("Galing mo lods",
-                "Register Student");
-
             try
             {
+                if(cbxInsurance.Checked)
+                {
+                    ArrayList patient = new ArrayList
+                    {
+                        name,
+                        age,
+                        sex,
+                        dt,
+                        date,
+                        address
+                    };
 
-            }catch(Exception ex)
+                    ParentForm.Enabled = false;
+                    Insurance ins = new Insurance(ParentForm, patient, query);
+                    ins.Show();
+                }
+                else
+                {
+                    /*_conn = DbConnection.getConnection();
+                    _conn.Open();
+
+                    SqlCommand command = new SqlCommand(query, _conn);
+                    command.ExecuteNonQuery();
+
+                    _conn.Close();
+
+                    MessageBox.Show("Patient recorded successfull!",
+                        "Patient Record");*/
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(),"Certified Bruh Moment",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }

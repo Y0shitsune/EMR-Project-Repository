@@ -18,27 +18,35 @@ namespace Med_Docs
 
         public void listUsers()
         {
-            //Combo Box DBConnection
-            _conn = DbConnection.getConnection();
+            try
+            {
+                //Combo Box DBConnection
+                _conn = DbConnection.getConnection();
 
-            _conn.Open();
+                _conn.Open();
 
-            string query = "SELECT First_Name,RoleID FROM APP_USER";
-            SqlCommand cmd = new SqlCommand(query, _conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                string query = "SELECT First_Name,RoleID FROM APP_USER";
+                SqlCommand cmd = new SqlCommand(query, _conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
-            DataSet ds = new DataSet();
+                DataSet ds = new DataSet();
 
-            adapter.Fill(ds);
+                adapter.Fill(ds);
 
-            Console.WriteLine(ds);
+                Console.WriteLine(ds);
 
-            comboBox1.ValueMember = "RoleID";
-            comboBox1.DisplayMember = "First_Name";
+                comboBox1.ValueMember = "RoleID";
+                comboBox1.DisplayMember = "First_Name";
 
-            comboBox1.DataSource = ds.Tables[0];
+                comboBox1.DataSource = ds.Tables[0];
 
-            _conn.Close();
+                _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No connection to the database has been made", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,7 +56,7 @@ namespace Med_Docs
             
             ParentForm parent = new ParentForm(user);
             parent.Show();
-            this.Hide();
+            Hide();
         }
     }
 }

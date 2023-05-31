@@ -151,6 +151,7 @@
             this.clnBday.Location = new System.Drawing.Point(63, 300);
             this.clnBday.MaxSelectionCount = 1;
             this.clnBday.Name = "clnBday";
+            this.clnBday.ShowTodayCircle = false;
             this.clnBday.TabIndex = 10;
             // 
             // txtAddress
