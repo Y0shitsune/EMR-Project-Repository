@@ -20,14 +20,6 @@ namespace Med_Docs
         {
             InitializeComponent();
             this.user = user;
-            openCRUD();
-        }
-
-        public void openCRUD()
-        {
-            UserControl1 crud = new UserControl1();
-            splitContainer1.Panel2.Controls.Add(crud);
-            crud.Dock = DockStyle.Fill;
         }
     }
 }
