@@ -48,10 +48,10 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(586, 26);
+            this.label1.Location = new System.Drawing.Point(744, 26);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(253, 59);
@@ -166,7 +166,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.cbxInsurance);
@@ -180,7 +180,7 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(403, 114);
+            this.panel1.Location = new System.Drawing.Point(561, 114);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(618, 862);
             this.panel1.TabIndex = 12;
@@ -218,11 +218,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1390, 1000);
+            this.ClientSize = new System.Drawing.Size(1720, 1000);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(1390, 2000);
+            this.MaximumSize = new System.Drawing.Size(1720, 2000);
             this.MinimumSize = new System.Drawing.Size(1390, 699);
             this.Name = "NewPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

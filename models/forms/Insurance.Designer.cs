@@ -143,6 +143,7 @@
             this.Name = "Insurance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Patient Insurance";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Insurance_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

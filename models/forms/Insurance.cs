@@ -89,5 +89,12 @@ namespace Med_Docs.models.forms
             _conn.Close();
             return ds.Tables[0].Rows[0]["PatientID"].ToString();
         }
+
+        private void Insurance_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            parent.Enabled = true;
+            parent.Show();
+            Hide();
+        }
     }
 }

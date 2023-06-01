@@ -64,7 +64,7 @@ namespace Med_Docs.models.forms
                 }
                 else
                 {
-                    /*_conn = DbConnection.getConnection();
+                    _conn = DbConnection.getConnection();
                     _conn.Open();
 
                     SqlCommand command = new SqlCommand(query, _conn);
@@ -73,7 +73,7 @@ namespace Med_Docs.models.forms
                     _conn.Close();
 
                     MessageBox.Show("Patient recorded successfull!",
-                        "Patient Record");*/
+                        "Patient Record");
                 }
             }
             catch (Exception ex)
