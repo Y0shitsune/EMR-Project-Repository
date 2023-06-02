@@ -67,9 +67,9 @@ namespace Med_Docs.models
             this.pnlSideBar.BackColor = System.Drawing.Color.White;
             this.pnlSideBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlSideBar.Controls.Add(this.panel5);
+            this.pnlSideBar.Controls.Add(this.panel2);
             this.pnlSideBar.Controls.Add(this.panel4);
             this.pnlSideBar.Controls.Add(this.panel3);
-            this.pnlSideBar.Controls.Add(this.panel2);
             this.pnlSideBar.Controls.Add(this.pnlButtonArea);
             this.pnlSideBar.Controls.Add(this.pnlLogo);
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -95,7 +95,7 @@ namespace Med_Docs.models
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.Controls.Add(this.button5);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 326);
+            this.panel4.Location = new System.Drawing.Point(0, 251);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(198, 75);
             this.panel4.TabIndex = 7;
@@ -106,7 +106,7 @@ namespace Med_Docs.models
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.button4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 251);
+            this.panel3.Location = new System.Drawing.Point(0, 176);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(198, 75);
             this.panel3.TabIndex = 6;
@@ -117,7 +117,7 @@ namespace Med_Docs.models
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.button3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 176);
+            this.panel2.Location = new System.Drawing.Point(0, 326);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(198, 75);
             this.panel2.TabIndex = 5;
