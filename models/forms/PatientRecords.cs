@@ -169,5 +169,12 @@ namespace Med_Docs.models.forms
                 txtAddress.Text = address;
             }
         }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            Scheduling s = new Scheduling(ParentForm);
+            ParentForm.Enabled = false;
+            s.Show();
+        }
     }
 }
