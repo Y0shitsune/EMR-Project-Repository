@@ -36,18 +36,15 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.clnBday = new System.Windows.Forms.MonthCalendar();
-            this.numAge = new System.Windows.Forms.NumericUpDown();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSchedule = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -143,16 +140,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Sex:";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(721, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 25);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Age:";
-            // 
             // txtName
             // 
             this.txtName.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,7 +152,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(648, 43);
+            this.label5.Location = new System.Drawing.Point(657, 12);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 25);
             this.label5.TabIndex = 14;
@@ -187,9 +174,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.clnBday);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.numAge);
             this.panel1.Controls.Add(this.txtName);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtAddress);
@@ -202,20 +187,11 @@
             // clnBday
             // 
             this.clnBday.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.clnBday.Location = new System.Drawing.Point(776, 43);
+            this.clnBday.Location = new System.Drawing.Point(785, 12);
             this.clnBday.MaxSelectionCount = 1;
             this.clnBday.Name = "clnBday";
             this.clnBday.ShowTodayCircle = false;
             this.clnBday.TabIndex = 18;
-            // 
-            // numAge
-            // 
-            this.numAge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAge.Location = new System.Drawing.Point(776, 4);
-            this.numAge.Name = "numAge";
-            this.numAge.Size = new System.Drawing.Size(418, 33);
-            this.numAge.TabIndex = 17;
             // 
             // button1
             // 
@@ -269,7 +245,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,13 +260,11 @@
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MonthCalendar clnBday;
-        private System.Windows.Forms.NumericUpDown numAge;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSchedule;
     }

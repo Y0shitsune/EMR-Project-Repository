@@ -31,7 +31,7 @@ namespace Med_Docs.models.forms
         {
             try
             {
-                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Age, Sex, Birthdate,Patient_Address AS Adress FROM PATIENT;";
+                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Adress FROM PATIENT;";
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -53,7 +53,7 @@ namespace Med_Docs.models.forms
         {
             try
             {
-                string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Age, Sex, Birthdate,Patient_Address AS Adress FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Age,Sex,Birthdate,Patient_Address) LIKE '%{search}%';";
+                string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Address FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Age,Sex,Birthdate,Patient_Address) LIKE '%{search}%';";
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -89,7 +89,7 @@ namespace Med_Docs.models.forms
             {
                 try
                 {
-                    //Patient_Name AS Patient, Age, Sex, Birthdate,Patient_Address AS Adress FROM PATIENT
+                    //Patient_Name AS Patient,  Sex, Birthdate,Patient_Address AS Adress FROM PATIENT
                     //validate the inputs
                     int id = (int)dataGridView1.SelectedCells[0].Value;
                     DateTime dt = clnBday.SelectionStart;
@@ -97,7 +97,6 @@ namespace Med_Docs.models.forms
                     //basta replace where id = id
                     string query = "UPDATE PATIENT SET " +
                         $"Patient_Name = '{txtName.Text}'," +
-                        $"Age = '{(int)numAge.Value}'," +
                         $"Sex = '{cbxSex.SelectedItem}'," +
                         $"Birthdate = '{date}'," +
                         $"Patient_Address = '{txtAddress.Text}' " +
@@ -143,7 +142,7 @@ namespace Med_Docs.models.forms
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Patient_Name AS Patient, Age, Sex, Birthdate,Patient_Address AS Adress FROM PATIENT
+            //Patient_Name AS Patient,  Sex, Birthdate,Patient_Address AS Adress FROM PATIENT
 
             //replace rin yung birthdate and sex (somehow idk)
             ArrayList ar = new ArrayList();
@@ -165,7 +164,6 @@ namespace Med_Docs.models.forms
                 string address = dataGridView1.SelectedCells[5].Value.ToString();
 
                 txtName.Text = name;
-                numAge.Value = age;
                 txtAddress.Text = address;
             }
         }

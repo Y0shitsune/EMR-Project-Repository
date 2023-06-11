@@ -23,7 +23,7 @@ namespace Med_Docs.models.forms
             InitializeComponent();
             this.parent = parent;
             _conn = DbConnection.getConnection();
-            string sql = "SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Adress FROM PATIENT";
+            string sql = "SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Address FROM PATIENT";
             initTable(sql);
         }
 
@@ -63,7 +63,7 @@ namespace Med_Docs.models.forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Adress FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Age,Sex,Birthdate,Patient_Address) LIKE '%{textBox1.Text}%';";
+            string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Address FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Sex,Birthdate,Patient_Address) LIKE '%{textBox1.Text}%';";
             initTable(query);
         }
 
@@ -78,7 +78,7 @@ namespace Med_Docs.models.forms
         {
             try
             {
-                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Adress FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Age,Sex,Birthdate,Patient_Address)" +
+                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Address FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Sex,Birthdate,Patient_Address)" +
                     $"LIKE '%{textBox1.Text}%';";
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);

@@ -35,14 +35,13 @@ namespace Med_Docs.models.forms
             //NOTE: Wala ka ring bagong window para sa insurance info lol
 
             string name = txtName.Text.ToString();
-            int age = (int) numAge.Value;
             string sex = cmbGender.Text.ToString();
             DateTime dt = clnBday.SelectionStart;
             string date = $"{dt.Year}-{dt.Month}-{dt.Day}";
             string address = txtAddress.Text.ToString();
 
-            string query = "INSERT INTO PATIENT(Patient_Name,Age,Sex,Birthdate,Patient_Address) VALUES" +
-                $"('{name}',{age},'{sex}','{date}','{address}');";
+            string query = "INSERT INTO PATIENT(Patient_Name,Sex,Birthdate,Patient_Address) VALUES" +
+                $"('{name}','{sex}','{date}','{address}');";
 
             try
             {
@@ -51,7 +50,6 @@ namespace Med_Docs.models.forms
                     ArrayList patient = new ArrayList
                     {
                         name,
-                        age,
                         sex,
                         dt,
                         date,

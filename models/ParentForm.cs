@@ -7,6 +7,7 @@ using Med_Docs.models.forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using Med_Docs.models.documents;
 
 namespace Med_Docs.models
 {
@@ -29,6 +30,7 @@ namespace Med_Docs.models
         {
             WindowState = FormWindowState.Normal;
             Size = Screen.PrimaryScreen.WorkingArea.Size;
+            Console.WriteLine(Size);
             Image m = pictureBox1.Image;
 
             Bitmap b = new Bitmap(pictureBox1.Width,pictureBox1.Height);
@@ -37,7 +39,23 @@ namespace Med_Docs.models
             g.DrawImage(m, 0, 0, pictureBox1.Width, pictureBox1.Height);
             g.Dispose();
 
+            pnlExitBar.Width = Size.Width;
             pictureBox1.Image = b;
+
+            pnlMain.Height = Size.Height - 102;
+
+            foreach (Control c in pnlSideBar.Controls)
+            {
+                int buttonCount = pnlSideBar.Controls.Count-1;
+                if (c.Name != "pnlLogo")
+                {
+                    c.Height = pnlMain.Height/5;
+                    foreach(Control c2 in c.Controls)
+                    {
+                        c2.Height = c.Height;
+                    }
+                }
+            }
         }
 
         public void OpenChildForm(Form childForm)
@@ -127,6 +145,12 @@ namespace Med_Docs.models
                 OpenChildForm(np);
                 np.initRecords(textBox1.Text.ToString());
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            CrystalReportGeneration cg = new CrystalReportGeneration();
+            cg.GenerateReport();
         }
     }
 }
