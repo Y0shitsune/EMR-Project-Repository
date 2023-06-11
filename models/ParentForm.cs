@@ -15,8 +15,8 @@ namespace Med_Docs.models
     {
 
         //Fields
-        User user;
         Form currentForm = new Form();
+        public User user { get; }
 
         //Constructor
         public ParentForm(User user)
@@ -77,6 +77,8 @@ namespace Med_Docs.models
             childForm.BringToFront();
             childForm.Show();
         }
+
+        
 
         //Side Bar Buttons
 

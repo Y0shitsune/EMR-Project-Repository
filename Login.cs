@@ -25,7 +25,7 @@ namespace Med_Docs
 
                 _conn.Open();
 
-                string query = "SELECT First_Name,RoleID FROM APP_USER";
+                string query = "SELECT UserID,First_Name,RoleID FROM APP_USER";
                 SqlCommand cmd = new SqlCommand(query, _conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
@@ -48,12 +48,14 @@ namespace Med_Docs
             }
             
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string roleID = comboBox1.SelectedValue.ToString();
-            User user = new User(roleID);
-            
+            comboBox1.ValueMember = "UserID";
+            int userID = (int)comboBox1.SelectedValue;
+            Console.WriteLine(userID);
+            User user = new User(roleID,userID);
+
             ParentForm parent = new ParentForm(user);
             parent.Show();
             Hide();

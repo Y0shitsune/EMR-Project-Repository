@@ -8,6 +8,7 @@ namespace Med_Docs.src
 {
     public class User
     {
+        public int id { get;}
         public enum Permission
         {
             CanCreateUser,
@@ -22,7 +23,9 @@ namespace Med_Docs.src
         }
         private List<Permission> _permissions { get; set; }
         private int _securityLevel;
-        public User(string roleID) {
+        public User(string roleID, int id)
+        {
+            this.id = id;
             if (roleID.Equals("2000"))
             {
                 _securityLevel = 3;

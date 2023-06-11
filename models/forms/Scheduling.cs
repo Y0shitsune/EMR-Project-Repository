@@ -17,11 +17,12 @@ namespace Med_Docs.models.forms
     public partial class Scheduling : Form
     {
         SqlConnection _conn;
-        Form parent;
+        ParentForm parent;
         public Scheduling(Form parent)
         {
             InitializeComponent();
-            this.parent = parent;
+            dtpTime.CustomFormat = "hh:mm tt";
+            this.parent = (ParentForm)parent;
             _conn = DbConnection.getConnection();
             string sql = "SELECT PatientID AS ID, Patient_Name AS Patient, Birthdate,Patient_Address AS Address FROM PATIENT";
             initTable(sql);
@@ -90,6 +91,40 @@ namespace Med_Docs.models.forms
 
                 dataGridView1.DataSource = ds.Tables[0];
                 _conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error");
+                _conn.Close();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string scheduledDate = dtpDate.Value.ToString("yyyy-MM-dd");
+            string scheduledTime = dtpTime.Value.ToString("hh:mm:ss");
+
+
+            int id = (int)dataGridView1.SelectedCells[0].Value;
+            int userID = parent.user.id;
+
+            Console.WriteLine(userID);
+
+
+            try
+            {
+                string query = $"INSERT INTO Schedule VALUES({id},{userID},'{scheduledDate}','{scheduledTime}');";
+
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand(query, _conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                cmd.ExecuteNonQuery();
+                _conn.Close();
+
+                MessageBox.Show("Patient scheduled successfully!",
+                    "Schedule");
+                
+                Close();
             }
             catch (Exception ex)
             {

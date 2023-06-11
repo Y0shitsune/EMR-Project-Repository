@@ -30,19 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.numAge = new System.Windows.Forms.NumericUpDown();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.clnBday = new System.Windows.Forms.MonthCalendar();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.cbxInsurance = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numAge)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,17 +65,6 @@
             this.label2.Size = new System.Drawing.Size(163, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "Patient Name:";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(57, 117);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 32);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Age:";
             // 
             // label3
             // 
@@ -123,15 +109,6 @@
             this.txtName.Size = new System.Drawing.Size(491, 33);
             this.txtName.TabIndex = 6;
             // 
-            // numAge
-            // 
-            this.numAge.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numAge.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numAge.Location = new System.Drawing.Point(63, 152);
-            this.numAge.Name = "numAge";
-            this.numAge.Size = new System.Drawing.Size(491, 33);
-            this.numAge.TabIndex = 8;
-            // 
             // cmbGender
             // 
             this.cmbGender.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -173,10 +150,8 @@
             this.panel1.Controls.Add(this.clnBday);
             this.panel1.Controls.Add(this.txtAddress);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cmbGender);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.numAge);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label9);
@@ -226,7 +201,6 @@
             this.MinimumSize = new System.Drawing.Size(1390, 699);
             this.Name = "NewPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            ((System.ComponentModel.ISupportInitialize)(this.numAge)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -238,12 +212,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.NumericUpDown numAge;
         private System.Windows.Forms.ComboBox cmbGender;
         private System.Windows.Forms.MonthCalendar clnBday;
         private System.Windows.Forms.TextBox txtAddress;
