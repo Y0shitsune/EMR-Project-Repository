@@ -17,10 +17,12 @@ namespace Med_Docs.models.forms
     public partial class NewPatient : Form
     {
         SqlConnection _conn;
-        public NewPatient()
+        ParentForm parentForm;
+        public NewPatient(ParentForm parentForm)
         {
             InitializeComponent();
             TopLevel = false;
+            this.parentForm = parentForm;
         }
 
         //Clarence pakilagyan ng text para malinaw kung ano naselect na calendar date ah
@@ -39,9 +41,10 @@ namespace Med_Docs.models.forms
             DateTime dt = clnBday.SelectionStart;
             string date = $"{dt.Year}-{dt.Month}-{dt.Day}";
             string address = txtAddress.Text.ToString();
+            int user = parentForm.user.id;
 
             string query = "INSERT INTO PATIENT(Patient_Name,Sex,Birthdate,Patient_Address) VALUES" +
-                $"('{name}','{sex}','{date}','{address}');";
+                $"('{name}','{sex}','{date}','{address}',{user});";
 
             try
             {
@@ -53,7 +56,8 @@ namespace Med_Docs.models.forms
                         sex,
                         dt,
                         date,
-                        address
+                        address,
+                        user,
                     };
 
                     ParentForm.Enabled = false;

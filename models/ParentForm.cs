@@ -8,6 +8,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using Med_Docs.models.documents;
+using System.Diagnostics;
+using System.IO;
+using System.Text.Json;
 
 namespace Med_Docs.models
 {
@@ -17,20 +20,21 @@ namespace Med_Docs.models
         //Fields
         Form currentForm = new Form();
         public User user { get; }
+        DateTime currentDate = DateTime.Today;
 
         //Constructor
         public ParentForm(User user)
         {
             this.user = user;
             InitializeComponent();
-            initForm();
+            InitForm();
+            //CompareData();
         }
 
-        public void initForm()
+        private void InitForm()
         {
             WindowState = FormWindowState.Normal;
             Size = Screen.PrimaryScreen.WorkingArea.Size;
-            Console.WriteLine(Size);
             Image m = pictureBox1.Image;
 
             Bitmap b = new Bitmap(pictureBox1.Width,pictureBox1.Height);
@@ -42,27 +46,34 @@ namespace Med_Docs.models
             pnlExitBar.Width = Size.Width;
             pictureBox1.Image = b;
 
-            pnlMain.Height = Size.Height - 102;
+            pnlMain.Height = Size.Height - pnlTopBar.Height;
+            pnlMain.Width = Size.Width - pnlSideBar.Width;
 
             foreach (Control c in pnlSideBar.Controls)
             {
                 int buttonCount = pnlSideBar.Controls.Count-1;
                 if (c.Name != "pnlLogo")
                 {
-                    c.Height = pnlMain.Height/5;
+                    c.Height = (Size.Height - pnlTopBar.Height)/buttonCount;
                     foreach(Control c2 in c.Controls)
                     {
                         c2.Height = c.Height;
                     }
                 }
             }
+            OpenChildForm(new Dashboard());
         }
 
-        public void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm)
         {
+            if (childForm.GetType() != typeof(Dashboard))
+            {
+                textBox1.Clear();
+            }
+
             currentForm.Dispose();
             currentForm.Close();
-            
+
             currentForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
@@ -71,21 +82,27 @@ namespace Med_Docs.models
             pnlMain.Controls.Add(childForm);
             pnlMain.Tag = childForm;
 
-            childForm.Width = pnlMain.Width-10;
+            childForm.Width = pnlMain.Width-5;
             childForm.Height += 50;
 
             childForm.BringToFront();
             childForm.Show();
+
+            Console.WriteLine(pnlMain.Size);
+            Console.WriteLine(childForm.Size);
         }
 
-        
+        public void GoToDashboard()
+        {
+            OpenChildForm(new Dashboard());
+        }
 
         //Side Bar Buttons
 
         //New Patient Button
         private void button1_Click(object sender, EventArgs e)
         {
-            NewPatient np = new NewPatient();
+            NewPatient np = new NewPatient(this);
             OpenChildForm(np);
         }
 
@@ -131,28 +148,36 @@ namespace Med_Docs.models
         {
             Dispose();
             Close();
+            Application.Exit();
         }
 
         //Search Box
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (currentForm.GetType() == typeof(PatientRecords))
+            if (currentForm.GetType() == typeof(Dashboard))
             {
-                PatientRecords prForm = (PatientRecords)currentForm;
-                prForm.initRecords(textBox1.Text.ToString());
+                Dashboard dash = (Dashboard)currentForm;
+                dash.loadRegistry(textBox1.Text.ToString());
             }
             else
             {
-                PatientRecords np = new PatientRecords();
-                OpenChildForm(np);
-                np.initRecords(textBox1.Text.ToString());
+                Dashboard dash = new Dashboard();
+                OpenChildForm(dash);
+                dash.loadRegistry(textBox1.Text.ToString());
             }
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CrystalReportGeneration cg = new CrystalReportGeneration();
-            cg.GenerateReport();
+            currentForm.Dispose();
+            currentForm.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Dashboard dash = new Dashboard();
+            dash.Show();
+            OpenChildForm(dash);
         }
     }
 }

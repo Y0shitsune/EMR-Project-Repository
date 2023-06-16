@@ -31,7 +31,7 @@ namespace Med_Docs.models.forms
         {
             try
             {
-                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Adress FROM PATIENT;";
+                string query = "SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Adress, UserID AS Registrant FROM PATIENT;";
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -53,7 +53,7 @@ namespace Med_Docs.models.forms
         {
             try
             {
-                string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Address FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Age,Sex,Birthdate,Patient_Address) LIKE '%{search}%';";
+                string query = $"SELECT PatientID AS ID, Patient_Name AS Patient, Sex, Birthdate, Patient_Address AS Address, UserID AS Registrant FROM PATIENT WHERE CONCAT_WS(PatientID,Patient_Name,Sex,Birthdate,Patient_Address,UserID) LIKE '%{search}%';";
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -152,11 +152,6 @@ namespace Med_Docs.models.forms
                 ar.Add(item);
             }
 
-            foreach (var item in ar)
-            {
-                Console.WriteLine(item);
-            }
-
             if(dataGridView1.SelectedCells[2].Value.GetType() != typeof(DBNull))
             {
                 string name = dataGridView1.SelectedCells[1].Value.ToString();
@@ -173,6 +168,11 @@ namespace Med_Docs.models.forms
             Scheduling s = new Scheduling(ParentForm);
             ParentForm.Enabled = false;
             s.Show();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            initRecords(txtSearch.Text.ToString());
         }
     }
 }

@@ -71,6 +71,7 @@ namespace Med_Docs.models.forms
         private void Scheduling_FormClosing(object sender, FormClosingEventArgs e)
         {
             parent.Enabled = true;
+            parent.GoToDashboard();
             Dispose();
             Hide();
         }
@@ -101,19 +102,18 @@ namespace Med_Docs.models.forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            string scheduledDate = dtpDate.Value.ToString("yyyy-MM-dd");
-            string scheduledTime = dtpTime.Value.ToString("hh:mm:ss");
-
-
-            int id = (int)dataGridView1.SelectedCells[0].Value;
-            int userID = parent.user.id;
-
-            Console.WriteLine(userID);
-
-
             try
             {
-                string query = $"INSERT INTO Schedule VALUES({id},{userID},'{scheduledDate}','{scheduledTime}');";
+                //check if a row is selected
+                //check if schedule already exists
+                string scheduledDate = dtpDate.Value.ToString("yyyy-MM-dd");
+                string scheduledTime = dtpTime.Value.ToString("hh:mm:ss");
+
+                int id = (int)dataGridView1.SelectedCells[0].Value;
+                string name = (string)dataGridView1.SelectedCells[1].Value;
+                int userID = parent.user.id;
+
+                string query = $"INSERT INTO Schedule VALUES({id},{userID},'{scheduledDate}','{scheduledTime}','{name}');";
 
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand(query, _conn);
@@ -123,7 +123,6 @@ namespace Med_Docs.models.forms
 
                 MessageBox.Show("Patient scheduled successfully!",
                     "Schedule");
-                
                 Close();
             }
             catch (Exception ex)
@@ -132,5 +131,8 @@ namespace Med_Docs.models.forms
                 _conn.Close();
             }
         }
+
+
+
     }
 }

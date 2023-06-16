@@ -38,7 +38,8 @@ namespace Med_Docs.models.documents
                 "SELECT Patient_Name, YEAR(Birthdate) AS Age, Sex, Patient_Address FROM PATIENT " +
                 $"WHERE PatientID = {patID};" +
 
-                "SELECT Description AS Medicine,CONCAT('Sig: ',Doses) AS Doses,CONCAT('#',Total) AS Amount FROM MEDICINE"
+
+                "SELECT CONCAT(Description,'\n','Sig: ',Doses,'\n','#',Total) AS Medicine FROM MEDICINE"
                 );
 
             DataSet mainResults = DbConnection.doQuery(mainQuery.ToString(), _conn);
@@ -54,6 +55,7 @@ namespace Med_Docs.models.documents
             {
                 mainQuery.Append($"\nOR MedicineID = {row[0]}");
             }
+
             mainQuery.Append(";");
 
             int age = DbConnection.getAge(patID);
@@ -70,35 +72,25 @@ namespace Med_Docs.models.documents
             folderDialog.RootFolder = Environment.SpecialFolder.Desktop;
             folderDialog.ShowDialog();
 
-            string query = "SELECT * FROM APP_USER; SELECT * FROM INSURANCE; SELECT * FROM PATIENT;";
-
-            _conn.Open();
-            SqlCommand cmd = new SqlCommand(query, _conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
             DataSet ds = new DataSet();
-            adapter.Fill(ds);
+            ds.ReadXml(Application.StartupPath + "\\Prescription.xml");
 
-            //ds.WriteXml(folderDialog.SelectedPath + "\\TEST.xml");
-
-            _conn.Close();
 
             var report = new PrescriptionReport();
             report.SetDataSource(ds.Tables);
             report.ExportToDisk(ExportFormatType.PortableDocFormat, $"{folderDialog.SelectedPath}\\REPORT.pdf");
         }
 
-
         public void GenerateReport()
         {
             if (File.Exists(Application.StartupPath + "\\Prescription.xml"))
             {
-                //GeneratePDF();
+                GeneratePDF();
             }
             else
             {
                 GenerateXML(909321, 123213, 33401032);
-                //GeneratePDF();
+                GeneratePDF();
             }
         }
     }

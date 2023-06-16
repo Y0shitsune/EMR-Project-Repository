@@ -197,8 +197,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(1720, 2000);
-            this.MinimumSize = new System.Drawing.Size(1390, 699);
+            this.MaximumSize = new System.Drawing.Size(1920, 1080);
+            this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "NewPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.panel1.ResumeLayout(false);

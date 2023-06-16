@@ -43,7 +43,6 @@ namespace Med_Docs.models
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -239,12 +238,12 @@ namespace Med_Docs.models
             this.pictureBox1.Size = new System.Drawing.Size(198, 83);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pnlTopBar
             // 
             this.pnlTopBar.BackColor = System.Drawing.Color.White;
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTopBar.Controls.Add(this.button8);
             this.pnlTopBar.Controls.Add(this.button1);
             this.pnlTopBar.Controls.Add(this.textBox1);
             this.pnlTopBar.Controls.Add(this.label1);
@@ -254,18 +253,9 @@ namespace Med_Docs.models
             this.pnlTopBar.Size = new System.Drawing.Size(1720, 102);
             this.pnlTopBar.TabIndex = 1;
             // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(437, 55);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.ForestGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
@@ -303,9 +293,10 @@ namespace Med_Docs.models
             this.pnlMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMain.Location = new System.Drawing.Point(200, 102);
+            this.pnlMain.MinimumSize = new System.Drawing.Size(1000, 600);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.pnlMain.Size = new System.Drawing.Size(1720, 1010);
+            this.pnlMain.Size = new System.Drawing.Size(1720, 1080);
             this.pnlMain.TabIndex = 2;
             // 
             // pnlExitBar
@@ -347,6 +338,7 @@ namespace Med_Docs.models
             this.Name = "ParentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Meditech Solutions - EMR System";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParentForm_FormClosing);
             this.pnlSideBar.ResumeLayout(false);
             this.pnlMC.ResumeLayout(false);
             this.pnlPrescription.ResumeLayout(false);
@@ -384,7 +376,6 @@ namespace Med_Docs.models
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button8;
     }
 }
 
