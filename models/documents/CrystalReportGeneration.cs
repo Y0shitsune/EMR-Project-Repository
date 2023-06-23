@@ -11,60 +11,70 @@ namespace Med_Docs.models.documents
 {
     internal class CrystalReportGeneration
     {
-        SqlConnection _conn;
-
-        public CrystalReportGeneration()
+        private static SqlConnection _conn;
+        private static void GenerateXMLAsSecretary(Secretary secr, int hospitalID, int patID, int prescID)
         {
-            _conn = DbConnection.getConnection();
-        }
-
-        public void GenerateXML(int prescID, int licID, int patID)
-        {
-            string medIDQuery = $"SELECT MedicineID FROM PRESCRIPTION_DOCUMENT WHERE PrescriptionID = {prescID};";
-
             StringBuilder mainQuery = new StringBuilder();
             mainQuery.AppendLine("SELECT LocationName," +
                 "CONCAT(City,' ',Province) AS Address " +
-                "FROM FACILITY " +
-                $"WHERE LicenseNumber = {licID};" +
+                "FROM HOSPITAL " +
+                $"WHERE HospitalID = {hospitalID};" +
 
                 "SELECT CONCAT(First_Name,' ',SUBSTRING(Middle_Name,1,1),'. ', Last_Name) AS Name," +
                 "CONCAT('Reg. No. ',LicenseNumber) AS LicenseNumber FROM APP_USER " +
-                $"WHERE LicenseNumber = {licID};" +
+                "INNER JOIN CREDENTIAL ON APP_USER.ID = CREDENTIAL.getID() "+
+                $"WHERE ID = {secr.doctorID};" +
 
-                "SELECT JobTitle FROM DOCTOR " +
-                $"WHERE LicenseNumber = {licID};" +
+                "SELECT Title FROM CREDENTIAL " +
+                $"WHERE UserID = {secr.doctorID};" +
 
-                "SELECT Patient_Name, YEAR(Birthdate) AS Age, Sex, Patient_Address FROM PATIENT " +
+                "SELECT Name, YEAR(Birthdate) AS Age, Sex, Address FROM PATIENT " +
                 $"WHERE PatientID = {patID};" +
 
-
-                "SELECT CONCAT(Description,'\n','Sig: ',Doses,'\n','#',Total) AS Medicine FROM MEDICINE"
+                "SELECT CONCAT(Description,'\n','Sig: ',Doses,'\n','#',Total) AS Medicine FROM MEDICINE "+
+                "INNER JOIN PRESCRIPTION_MEDICINE ON MEDICINE.MedicineID = PRESCRIPTION_MEDICINE.MedicineID "+
+                $"WHERE PRESCRIPTION_MEDICINE.PrescriptionID = {prescID};"
                 );
 
             DataSet mainResults = DbConnection.doQuery(mainQuery.ToString(), _conn);
-            DataSet medIDResults = DbConnection.doQuery(medIDQuery, _conn);
-
-            DataRow firstrow = medIDResults.Tables[0].Rows[0];
-            mainQuery.Append($"WHERE MedicineID = {firstrow[0]}");
-
-            firstrow.Delete();
-            firstrow.AcceptChanges();
-
-            foreach (DataRow row in medIDResults.Tables[0].Rows)
-            {
-                mainQuery.Append($"\nOR MedicineID = {row[0]}");
-            }
-
-            mainQuery.Append(";");
 
             int age = DbConnection.getAge(patID);
             mainResults.Tables[3].Rows[0][1] = age;
 
             mainResults.WriteXml(Application.StartupPath + "\\Prescription.xml");
         }
+        private static void GenerateXMLAsDoctor(Doctor dr, int hospitalID, int patID, int prescID)
+        {
+            StringBuilder mainQuery = new StringBuilder();
+            mainQuery.AppendLine("SELECT LocationName," +
+                "CONCAT(City,' ',Province) AS Address " +
+                "FROM HOSPITAL " +
+                $"WHERE HospitalID = {hospitalID};" +
 
-        public void GeneratePDF()
+                "SELECT CONCAT(First_Name,' ',SUBSTRING(Middle_Name,1,1),'. ', Last_Name) AS Name," +
+                "CONCAT('Reg. No. ',LicenseNumber) AS LicenseNumber FROM APP_USER " +
+                "INNER JOIN CREDENTIAL ON APP_USER.ID = CREDENTIAL.getID() " +
+                $"WHERE ID = {dr.getID()};" +
+
+                "SELECT Title FROM CREDENTIAL " +
+                $"WHERE UserID = {dr.getID()};" +
+
+                "SELECT Name, YEAR(Birthdate) AS Age, Sex, Address FROM PATIENT " +
+                $"WHERE PatientID = {patID};" +
+
+                "SELECT CONCAT(Description,'\n','Sig: ',Doses,'\n','#',Total) AS Medicine FROM MEDICINE " +
+                "INNER JOIN PRESCRIPTION_MEDICINE ON MEDICINE.MedicineID = PRESCRIPTION_MEDICINE.MedicineID " +
+                $"WHERE PRESCRIPTION_MEDICINE.PrescriptionID = {prescID};"
+                );
+
+            DataSet mainResults = DbConnection.doQuery(mainQuery.ToString(), _conn);
+
+            int age = DbConnection.getAge(patID);
+            mainResults.Tables[3].Rows[0][1] = age;
+
+            mainResults.WriteXml(Application.StartupPath + "\\Prescription.xml");
+        }
+        private static void GeneratePDF()
         {
             var folderDialog = new FolderBrowserDialog();
             folderDialog.Description = "Please enter the folder you want to save in";
@@ -80,16 +90,18 @@ namespace Med_Docs.models.documents
             report.SetDataSource(ds.Tables);
             report.ExportToDisk(ExportFormatType.PortableDocFormat, $"{folderDialog.SelectedPath}\\REPORT.pdf");
         }
-
-        public void GenerateReport()
+        public static void GenerateReport(User user,int hospitalID, int patID, int prescID)
         {
-            if (File.Exists(Application.StartupPath + "\\Prescription.xml"))
+            _conn = DbConnection.getConnection();
+            //get the typeof
+            if(user.GetType() == typeof(Doctor))
             {
+                GenerateXMLAsDoctor((Doctor)user, hospitalID,patID,prescID);
                 GeneratePDF();
             }
-            else
+            else if(user.GetType() == typeof(Secretary))
             {
-                GenerateXML(909321, 123213, 33401032);
+                GenerateXMLAsSecretary((Secretary)user, hospitalID, patID, prescID);
                 GeneratePDF();
             }
         }

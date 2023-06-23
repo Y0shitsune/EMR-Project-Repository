@@ -12,14 +12,17 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Med_Docs.src;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Med_Docs.models.forms
 {
     public partial class Dashboard : Form
     {
         SqlConnection _conn;
-        public Dashboard( )
+        ParentForm parent;
+        public Dashboard(ParentForm parent)
         {
+            this.parent = parent;
             InitializeComponent();
             TopLevel = false;
             _conn = DbConnection.getConnection();
@@ -28,10 +31,26 @@ namespace Med_Docs.models.forms
 
         private void loadControls()
         {
-            loadRegistry();
-            loadBirthdayPatients();
-            loadSchedule();
+            //loadRegistry();
+            //loadBirthdayPatients();
+            //loadSchedule();
             lblDate.Text = DateTime.Now.ToShortDateString();
+
+            switch (parent.user.getRole())
+            {
+                case 1000:
+                    lblWelcomeMessage.Text = $"Welcome Admin {parent.user.getName()}";
+                    lblWelcomeMessage.Location = new Point(Width / 2 - (Width / 13), lblWelcomeMessage.Location.Y);
+                    break;
+                case 1001:
+                    lblWelcomeMessage.Text = $"Welcome Doctor {parent.user.getName()}";
+                    lblWelcomeMessage.Location = new Point(Width / 2 - (Width / 13), lblWelcomeMessage.Location.Y);
+                    break;
+                case 1002:
+                    lblWelcomeMessage.Text = $"Welcome Secretary {parent.user.getName()}";
+                    lblWelcomeMessage.Location = new Point(Width / 2 - (Width / 12), lblWelcomeMessage.Location.Y);
+                    break;
+            }
         }
 
         private void loadRegistry()
@@ -136,7 +155,6 @@ namespace Med_Docs.models.forms
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(schedules);
 
-                dgvScheduled.DataSource = schedules.Tables[0];
                 _conn.Close();
 
             }catch (Exception ex)

@@ -61,7 +61,7 @@ namespace Med_Docs.models
                     }
                 }
             }
-            OpenChildForm(new Dashboard());
+            OpenChildForm(new Dashboard(this));
         }
 
         private void OpenChildForm(Form childForm)
@@ -94,7 +94,7 @@ namespace Med_Docs.models
 
         public void GoToDashboard()
         {
-            OpenChildForm(new Dashboard());
+            OpenChildForm(new Dashboard(this));
         }
 
         //Side Bar Buttons
@@ -109,17 +109,9 @@ namespace Med_Docs.models
         //Patient Records Button
         private void button2_Click(object sender, EventArgs e)
         {
-            PatientRecords np = new PatientRecords();
-            np.Show();
-            OpenChildForm(np);
-        }
-
-        //Scheduling
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Scheduling np = new Scheduling(this);
-            Enabled = false;
-            np.Show();
+            PatientRecords pr = new PatientRecords();
+            pr.Show();
+            OpenChildForm(pr);
         }
 
         //Laboratory Form
@@ -131,7 +123,9 @@ namespace Med_Docs.models
         //Prescription Button
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Prescription pn = new Prescription(this,user);
+            Enabled = false;
+            pn.Show();
         }
 
         //Medical Certificate Button
@@ -161,7 +155,7 @@ namespace Med_Docs.models
             }
             else
             {
-                Dashboard dash = new Dashboard();
+                Dashboard dash = new Dashboard(this);
                 OpenChildForm(dash);
                 dash.loadRegistry(textBox1.Text.ToString());
             }
@@ -175,7 +169,7 @@ namespace Med_Docs.models
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Dashboard dash = new Dashboard();
+            Dashboard dash = new Dashboard(this);
             dash.Show();
             OpenChildForm(dash);
         }

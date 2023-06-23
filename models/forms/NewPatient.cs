@@ -41,7 +41,7 @@ namespace Med_Docs.models.forms
             DateTime dt = clnBday.SelectionStart;
             string date = $"{dt.Year}-{dt.Month}-{dt.Day}";
             string address = txtAddress.Text.ToString();
-            int user = parentForm.user.id;
+            int user = parentForm.user.getID();
 
             string query = "INSERT INTO PATIENT(Patient_Name,Sex,Birthdate,Patient_Address) VALUES" +
                 $"('{name}','{sex}','{date}','{address}',{user});";

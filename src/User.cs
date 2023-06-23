@@ -8,65 +8,59 @@ namespace Med_Docs.src
 {
     public class User
     {
-        public int id { get;}
-        public enum Permission
+        protected string name {  get; set; }
+        protected int userID { get; set; }
+        protected int roleID { get; set; }
+        public int getRole()
         {
-            CanCreateUser,
-            CanDeleteUser,
-            CanModifyUser,
-            CanCreatePrescription,
-            CanDeletePrescription,
-            CanModifyPrescription,
-            CanCreateMedRecord,
-            CanDeleteMedRecord,
-            CanModifyMedRecord
+            return roleID;
         }
-        private List<Permission> _permissions { get; set; }
-        private int _securityLevel;
-        public User(string roleID, int id)
+
+        public int getID()
         {
-            this.id = id;
-            if (roleID.Equals("2000"))
-            {
-                _securityLevel = 3;
-                _permissions = new List<Permission>()
-                {
-                    Permission.CanCreateUser,
-                    Permission.CanDeleteUser,
-                    Permission.CanModifyUser,
-                    Permission.CanCreatePrescription,
-                    Permission.CanDeletePrescription,
-                    Permission.CanCreateMedRecord,
-                    Permission.CanModifyMedRecord
-                };
-            }
-            else if (roleID.Equals("2010"))
-            {
-                _securityLevel = 2;
-                _permissions = new List<Permission>()
-                {
-                    Permission.CanCreatePrescription,
-                    Permission.CanDeletePrescription,
-                    Permission.CanCreateMedRecord,
-                    Permission.CanModifyMedRecord
-                };
-            }
-            else if (roleID.Equals("2020"))
-            {
-                _securityLevel = 1;
-                _permissions = new List<Permission>()
-                {
-                    Permission.CanCreateMedRecord,
-                    Permission.CanModifyMedRecord
-                };
-            }
+            return userID;
         }
-        public List<Permission> permissions { 
-            get { return _permissions; } 
-        }
-        public int securityLevel
+
+        public string getName()
         {
-            get { return _securityLevel; }
+            return name;
+        }
+
+        public User(int userID, string name)
+        { 
+            this.userID = userID;
+            this.name = name;
+        }
+    }
+    public class Admin : User
+    {
+        
+        public Admin(int userID, string name) : base(userID,name)
+        {
+            this.userID = userID;
+            this.name = name;
+            roleID = 1000;
+        }
+    }
+
+    public class Doctor : User
+    {
+        public Doctor(int userID, string name) : base(userID,name)
+        {
+            this.userID = userID;
+            this.name = name;
+            roleID = 1001;
+        }
+    }
+    public class Secretary : User
+    {
+        public int doctorID { get; }
+        public Secretary(int userID, int doctorID, string name) : base(userID,name)
+        {
+            this.userID = userID;
+            this.doctorID = doctorID;
+            this.name = name;
+            roleID = 1002;
         }
     }
 }

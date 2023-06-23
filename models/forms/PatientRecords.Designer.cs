@@ -42,7 +42,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.clnBday = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnSchedule = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -205,20 +204,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // btnSchedule
-            // 
-            this.btnSchedule.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSchedule.FlatAppearance.BorderSize = 0;
-            this.btnSchedule.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSchedule.Location = new System.Drawing.Point(1228, 644);
-            this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(238, 40);
-            this.btnSchedule.TabIndex = 20;
-            this.btnSchedule.Text = "Schedule Patient";
-            this.btnSchedule.UseVisualStyleBackColor = false;
-            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,7 +231,6 @@
             this.ClientSize = new System.Drawing.Size(1720, 1000);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnSchedule);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.radioButton2);
@@ -282,7 +266,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MonthCalendar clnBday;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnSchedule;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label6;
     }

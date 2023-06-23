@@ -163,13 +163,6 @@ namespace Med_Docs.models.forms
             }
         }
 
-        private void btnSchedule_Click(object sender, EventArgs e)
-        {
-            Scheduling s = new Scheduling(ParentForm);
-            ParentForm.Enabled = false;
-            s.Show();
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             initRecords(txtSearch.Text.ToString());

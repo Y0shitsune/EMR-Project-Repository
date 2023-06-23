@@ -105,6 +105,18 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="models\documents\CrystalReportGeneration.cs" />
+    <Compile Include="models\forms\HospitalSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="models\forms\HospitalSelection.Designer.cs">
+      <DependentUpon>HospitalSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="models\forms\MedicineRecords.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="models\forms\MedicineRecords.Designer.cs">
+      <DependentUpon>MedicineRecords.cs</DependentUpon>
+    </Compile>
     <Compile Include="models\forms\Insurance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,12 +134,6 @@
     </Compile>
     <Compile Include="models\forms\Precription.Designer.cs">
       <DependentUpon>Precription.cs</DependentUpon>
-    </Compile>
-    <Compile Include="models\forms\Scheduling.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="models\forms\Scheduling.Designer.cs">
-      <DependentUpon>Scheduling.cs</DependentUpon>
     </Compile>
     <Compile Include="models\forms\PatientRecords.cs">
       <SubType>Form</SubType>
@@ -158,6 +164,12 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PrescriptionReport.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="models\forms\HospitalSelection.resx">
+      <DependentUpon>HospitalSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="models\forms\MedicineRecords.resx">
+      <DependentUpon>MedicineRecords.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="models\forms\Insurance.resx">
       <DependentUpon>Insurance.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -167,9 +179,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="models\forms\Precription.resx">
       <DependentUpon>Precription.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="models\forms\Scheduling.resx">
-      <DependentUpon>Scheduling.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="models\forms\PatientRecords.resx">
       <DependentUpon>PatientRecords.cs</DependentUpon>

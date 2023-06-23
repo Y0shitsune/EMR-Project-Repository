@@ -36,8 +36,6 @@ namespace Med_Docs.models
             this.button3 = new System.Windows.Forms.Button();
             this.pnlLF = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.pnlSched = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
             this.pnlPR = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -53,7 +51,6 @@ namespace Med_Docs.models
             this.pnlMC.SuspendLayout();
             this.pnlPrescription.SuspendLayout();
             this.pnlLF.SuspendLayout();
-            this.pnlSched.SuspendLayout();
             this.pnlPR.SuspendLayout();
             this.pnlLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,7 +66,6 @@ namespace Med_Docs.models
             this.pnlSideBar.Controls.Add(this.pnlMC);
             this.pnlSideBar.Controls.Add(this.pnlPrescription);
             this.pnlSideBar.Controls.Add(this.pnlLF);
-            this.pnlSideBar.Controls.Add(this.pnlSched);
             this.pnlSideBar.Controls.Add(this.pnlPR);
             this.pnlSideBar.Controls.Add(this.pnlLogo);
             this.pnlSideBar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -85,7 +81,7 @@ namespace Med_Docs.models
             this.pnlMC.BackColor = System.Drawing.Color.White;
             this.pnlMC.Controls.Add(this.button6);
             this.pnlMC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMC.Location = new System.Drawing.Point(0, 401);
+            this.pnlMC.Location = new System.Drawing.Point(0, 326);
             this.pnlMC.Name = "pnlMC";
             this.pnlMC.Size = new System.Drawing.Size(198, 75);
             this.pnlMC.TabIndex = 5;
@@ -113,7 +109,7 @@ namespace Med_Docs.models
             this.pnlPrescription.BackColor = System.Drawing.Color.White;
             this.pnlPrescription.Controls.Add(this.button3);
             this.pnlPrescription.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPrescription.Location = new System.Drawing.Point(0, 326);
+            this.pnlPrescription.Location = new System.Drawing.Point(0, 251);
             this.pnlPrescription.Name = "pnlPrescription";
             this.pnlPrescription.Size = new System.Drawing.Size(198, 75);
             this.pnlPrescription.TabIndex = 4;
@@ -141,7 +137,7 @@ namespace Med_Docs.models
             this.pnlLF.BackColor = System.Drawing.Color.White;
             this.pnlLF.Controls.Add(this.button5);
             this.pnlLF.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLF.Location = new System.Drawing.Point(0, 251);
+            this.pnlLF.Location = new System.Drawing.Point(0, 176);
             this.pnlLF.Name = "pnlLF";
             this.pnlLF.Size = new System.Drawing.Size(198, 75);
             this.pnlLF.TabIndex = 3;
@@ -162,34 +158,6 @@ namespace Med_Docs.models
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // pnlSched
-            // 
-            this.pnlSched.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pnlSched.BackColor = System.Drawing.Color.White;
-            this.pnlSched.Controls.Add(this.button4);
-            this.pnlSched.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSched.Location = new System.Drawing.Point(0, 176);
-            this.pnlSched.Name = "pnlSched";
-            this.pnlSched.Size = new System.Drawing.Size(198, 75);
-            this.pnlSched.TabIndex = 2;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Azure;
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.Image = global::Med_Docs.Properties.Resources.icons8_calendar_30_24;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(0, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(198, 73);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Scheduling";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pnlPR
             // 
@@ -343,7 +311,6 @@ namespace Med_Docs.models
             this.pnlMC.ResumeLayout(false);
             this.pnlPrescription.ResumeLayout(false);
             this.pnlLF.ResumeLayout(false);
-            this.pnlSched.ResumeLayout(false);
             this.pnlPR.ResumeLayout(false);
             this.pnlLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -367,11 +334,9 @@ namespace Med_Docs.models
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlMC;
         private System.Windows.Forms.Panel pnlLF;
-        private System.Windows.Forms.Panel pnlSched;
         private System.Windows.Forms.Panel pnlPrescription;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button7;

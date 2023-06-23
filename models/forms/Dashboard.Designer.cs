@@ -33,19 +33,16 @@
             this.dgvBirthdays = new System.Windows.Forms.DataGridView();
             this.dgvRegistered = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.lblWelcomeMessage = new System.Windows.Forms.Label();
-            this.dgvScheduled = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBirthdays)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistered)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvScheduled)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(1565, 28);
+            this.lblDate.Location = new System.Drawing.Point(1583, 9);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(125, 30);
             this.lblDate.TabIndex = 0;
@@ -99,39 +96,16 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Registered Patients";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1138, 550);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(240, 37);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Scheduled Patients";
-            // 
             // lblWelcomeMessage
             // 
             this.lblWelcomeMessage.AutoSize = true;
-            this.lblWelcomeMessage.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeMessage.Location = new System.Drawing.Point(727, 22);
+            this.lblWelcomeMessage.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcomeMessage.Location = new System.Drawing.Point(722, 21);
             this.lblWelcomeMessage.Name = "lblWelcomeMessage";
-            this.lblWelcomeMessage.Size = new System.Drawing.Size(279, 37);
+            this.lblWelcomeMessage.Size = new System.Drawing.Size(277, 50);
             this.lblWelcomeMessage.TabIndex = 7;
-            this.lblWelcomeMessage.Text = "Welcome (Title) Name";
+            this.lblWelcomeMessage.Text = "Welcome (Role)";
             this.lblWelcomeMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dgvScheduled
-            // 
-            this.dgvScheduled.AllowUserToAddRows = false;
-            this.dgvScheduled.AllowUserToDeleteRows = false;
-            this.dgvScheduled.AllowUserToOrderColumns = true;
-            this.dgvScheduled.AllowUserToResizeRows = false;
-            this.dgvScheduled.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvScheduled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvScheduled.Location = new System.Drawing.Point(893, 600);
-            this.dgvScheduled.Name = "dgvScheduled";
-            this.dgvScheduled.Size = new System.Drawing.Size(729, 316);
-            this.dgvScheduled.TabIndex = 5;
             // 
             // Dashboard
             // 
@@ -143,8 +117,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1720, 1000);
             this.Controls.Add(this.lblWelcomeMessage);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.dgvScheduled);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgvRegistered);
             this.Controls.Add(this.dgvBirthdays);
@@ -157,7 +129,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             ((System.ComponentModel.ISupportInitialize)(this.dgvBirthdays)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistered)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvScheduled)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -170,8 +141,6 @@
         private System.Windows.Forms.DataGridView dgvBirthdays;
         private System.Windows.Forms.DataGridView dgvRegistered;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblWelcomeMessage;
-        private System.Windows.Forms.DataGridView dgvScheduled;
     }
 }
